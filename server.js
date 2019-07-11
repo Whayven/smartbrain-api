@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const cors = require('cors');
 const knex = require('knex');
 
@@ -24,7 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', (req, res) => { res.send(database.users) })
+app.get('/', (req, res) => { res.send('It is working') })
 app.post('/signin', signin.handleSignIn(db, bcrypt))
 app.post('/register', register.handleRegister(db, bcrypt))
 app.get('/profile/:id', profile.handleProfileGet(db))
